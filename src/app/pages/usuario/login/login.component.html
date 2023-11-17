@@ -1,20 +1,22 @@
-<div class="flex-container">
+<form [formGroup]="formGroup" (submit)="logarUsuario()">
+  <div class="flex-container">
 
-  <div class="container w-40">
-    <img class="w-30" src="assets/logo.png">
-    <mat-form-field class="w-90">
-      <mat-label>Email:</mat-label>
-      <input matInput>
-    </mat-form-field>
+    <div class="container w-40">
+      <img class="w-30" src="assets/logo.png">
+      <mat-form-field class="w-90">
+        <mat-label>Email:</mat-label>
+        <input formControlName="email" matInput>
+      </mat-form-field>
 
-    <mat-form-field class="w-90">
-      <mat-label>Senha:</mat-label>
-      <input type="password" matInput>
-    </mat-form-field>
+      <mat-form-field class="w-90">
+        <mat-label>Senha:</mat-label>
+        <input formControlName="password" type="password" matInput>
+      </mat-form-field>
 
-    <button class="w-90" mat-raised-button color="primary">ENTRAR</button>
-    <p>Não tem uma conta? <b>Cadastre-se</b></p>
+      <button type="submit" class="w-90" mat-raised-button color="primary">ENTRAR</button>
+      <p>Não tem uma conta? <b>Cadastre-se</b></p>
+    </div>
   </div>
+</form>
 
 
-</div>
