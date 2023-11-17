@@ -24,16 +24,15 @@ export class LoginComponent implements OnInit {
       email: [null, Validators.required],
       password: [null, Validators.required]
     })
+
   }
 
   logarUsuario() {
-    console.log(this.formGroup.valid)
-
     if (this.formGroup.valid) {
       this.filtro = this.formGroup.value;
       this.service.autenticarUsuario(this.filtro).subscribe({
         next: (response) => {
-          this.service.usuarioLogado = response;
+          localStorage.setItem("token", response)
         },
         error: (error) => {
           console.log(error)
