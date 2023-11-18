@@ -10,8 +10,10 @@ import {UsuarioModel} from "../models/usuario.model";
 })
 export class UsuarioService {
   private readonly baseUrl = GeralUtils.BASE_URL;
-  private readonly path = 'v1/login'
+  private readonly path = 'v1/usuario'
   private readonly pathLogin = 'v1/login'
+
+  usuarioLogado!: UsuarioModel
 
   constructor(
     public http: HttpClient
@@ -20,6 +22,10 @@ export class UsuarioService {
 
   autenticarUsuario(body: LoginFilterModel):Observable<any> {
     return this.http.post(`${this.baseUrl}${this.pathLogin}`, body, {responseType: 'text' });
+  }
+
+  cadastrar(body: UsuarioModel): Observable<UsuarioModel> {
+    return this.http.post<UsuarioModel>(`${this.baseUrl}${this.path}`, body);
   }
 
 }

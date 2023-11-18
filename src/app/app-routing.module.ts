@@ -11,8 +11,17 @@ const routes: Routes = [
         loadChildren: () => import ('./pages/usuario/usuario.module').then((m) => m.UsuarioModule),
       }
     ]
-
   },
+  {
+    path: '',
+    children: [
+      {
+        path: 'home',
+        loadChildren: () => import ('./pages/home/home.module').then((m) => m.HomeModule),
+      }
+    ]
+  },
+
   {path: '**', pathMatch: 'full', redirectTo: '/'},
 ];
 

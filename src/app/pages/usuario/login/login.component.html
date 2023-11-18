@@ -6,15 +6,22 @@
       <mat-form-field class="w-90">
         <mat-label>Email:</mat-label>
         <input formControlName="email" matInput>
+        <mat-error>{{validarErros('email')}}</mat-error>
       </mat-form-field>
 
       <mat-form-field class="w-90">
         <mat-label>Senha:</mat-label>
         <input formControlName="password" type="password" matInput>
+        <mat-error>{{validarErros('password')}}</mat-error>
       </mat-form-field>
 
       <button type="submit" class="w-90" mat-raised-button color="primary">ENTRAR</button>
-      <p>Não tem uma conta? <b>Cadastre-se</b></p>
+      <p>Não tem uma conta?
+        <a [routerLink]="'/usuario/cadastro'">
+          <b>Cadastre-se</b>
+        </a>
+
+      </p>
     </div>
   </div>
 </form>

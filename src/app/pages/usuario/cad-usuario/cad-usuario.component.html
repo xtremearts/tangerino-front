@@ -1,0 +1,38 @@
+<form [formGroup]="formGroup" (submit)="cadastrarUsuario()">
+  <div class="flex-container">
+
+    <div class="container w-40">
+      <img class="w-30" src="assets/logo.png">
+      <mat-form-field class="w-90">
+        <mat-label>Nome:</mat-label>
+        <input formControlName="nome" matInput>
+        <mat-error>{{validarErros('nome')}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="w-90">
+        <mat-label>Email:</mat-label>
+        <input formControlName="email" matInput>
+        <mat-error>{{validarErros('email')}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="w-90">
+        <mat-label>Senha::</mat-label>
+        <input minlength="5" formControlName="password" type="password" matInput>
+        <mat-error>{{validarErros('password', 5)}}</mat-error>
+
+      </mat-form-field>
+
+      <button type="submit" class="w-90" mat-raised-button color="primary">CADASTRAR</button>
+      <p>Já tem cadastro?
+        <a [routerLink]="'/usuario/login'">
+          <b>Fazer login</b>
+        </a>
+
+      </p>
+    </div>
+  </div>
+</form>
+
+
+
+

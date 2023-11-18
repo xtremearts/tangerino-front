@@ -9,11 +9,14 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatButtonModule} from "@angular/material/button";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { CadUsuarioComponent } from './cad-usuario/cad-usuario.component';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
+    CadUsuarioComponent
   ],
   exports: [
     LoginComponent
@@ -27,7 +30,8 @@ import {HttpClientModule} from "@angular/common/http";
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule
   ]
 })
 export class UsuarioModule { }
