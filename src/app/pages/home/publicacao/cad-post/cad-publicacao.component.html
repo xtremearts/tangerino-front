@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Criar nova publicação</h1>
+<mat-dialog-content>
+  <form [formGroup]="formGroup" (submit)="cadastrarUsuario()">
+    <mat-card class="w-95">
+      <div [ngClass]="imagemObrigatorio ? 'obrigatorio' : ''">
+        <img class="w-100" *ngIf="file" [src]="imagemPreview">
+        <span *ngIf="!file"><mat-icon class="icon-image">add_photo_alternate</mat-icon></span>
+        <input style="display: none" type="file" #uploader (change)="adicionarImagem($event)" required/>
+      </div>
+      <mat-error *ngIf="imagemObrigatorio">Obrigatório</mat-error>
+
+      <mat-card-actions>
+        <button (click)="uploader.click()" class="action-button" type="button" color="primary" mat-button> Selecionar do Computador
+          <mat-icon  >add</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-form-field class="w-100" >
+      <mat-label>Escreva uma legenda</mat-label>
+      <textarea formControlName="descricao" matInput mat-dialog-content> </textarea>
+    </mat-form-field>
+
+    <div class="botoes" mat-dialog-actions>
+      <button color="warn" mat-raised-button mat-dialog-close>CANCELAR</button>
+      <button color="primary" type="submit" mat-raised-button>PUBLICAR</button>
+    </div>
+  </form>
+</mat-dialog-content>
