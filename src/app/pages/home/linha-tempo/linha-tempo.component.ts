@@ -1,9 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {GeralUtils} from "../../../services/geralUtils";
 import {PublicacaoService} from "../../../services/publicacao.service";
-import {PublicacaoModel, PublicacaoRetornoModel} from "../../../models/publicacao.model";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {ComentarioService} from "../../../services/comentario.service";
+import {ComentarioFilterModel} from "../../../models/comentario-filter.model";
+import {ComentarioModel} from "../../../models/comentario.model";
+import {PublicacaoModel} from "../../../models/publicacao.model";
 
 @Component({
   selector: 'app-linha-tempo',
@@ -13,25 +16,60 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 export class LinhaTempoComponent implements OnInit {
   formGroup!: FormGroup;
   base64Imagem = GeralUtils.BASE64_IMAGEM;
+  filter!: ComentarioFilterModel;
+  objComentariosAtivos?: ComentarioModel[];
 
   constructor(
     public fb: FormBuilder,
-    public service: PublicacaoService,
+    public publicacaoService: PublicacaoService,
+    public comentarioService: ComentarioService,
     public alert: MatSnackBar,
   ) {
   }
 
   ngOnInit(): void {
     this.formGroup = this.fb.group({
-      comentario: null,
-      idPublicacao: null
+      comentario: [null, Validators.required],
+      publicacao: [null, Validators.required]
     })
 
-    this.service.carregarPublicacoes()
+    this.publicacaoService.carregarPublicacoes()
   }
 
 
-  publicar(number: number) {
+  publicar(publicacao: PublicacaoModel) {
+    this.formGroup.get('publicacao')?.setValue(publicacao);
+
+    this.filter = this.formGroup.value;
+    if (this.formGroup.valid) {
+      this.comentarioService.cadastrar(this.filter).subscribe({
+        next: (response) => {
+          this.objComentariosAtivos = response
+          this.publicacaoService.carregarPublicacoes()
+          this.formGroup.get('comentario')?.reset();
+          this.alert.open('Comentário salvo com sucesso', 'Fechar', GeralUtils.configAlert)
+        },
+        error: (error) => {
+          this.alert.open(error, 'Fechar', GeralUtils.configAlert)
+        }
+      })
+    }
+  }
+
+  obterComentariosPublicacao(id: number) {
+    this.comentarioService.obterPorPublicacao(id).subscribe({
+      next: (response) => {
+        this.objComentariosAtivos = response
+      },
+      error: (error) => {
+        this.alert.open(error, 'Fechar', GeralUtils.configAlert)
+      }
+    })
+  }
+
+
+  abrirComentarios(comentarios: ComentarioModel[]) {
+    this.objComentariosAtivos = comentarios;
 
   }
 }

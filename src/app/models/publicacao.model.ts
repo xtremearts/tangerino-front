@@ -1,4 +1,5 @@
 import {UsuarioModel} from "./usuario.model";
+import {ComentarioModel} from "./comentario.model";
 
 
 export interface PublicacaoModel {
@@ -14,6 +15,7 @@ export class PublicacaoRetornoModel {
   dtCriacao?: Date;
   descricao?: string;
   imagem?: any;
+  comentario?: ComentarioModel[]
 
 }
 

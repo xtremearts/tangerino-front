@@ -6,6 +6,10 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+a {
+  cursor: pointer;
+}
+
 .w-10 {
   width: 20%;
 }

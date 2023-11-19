@@ -1,6 +1,6 @@
 <div class="container-linha-tempo">
   <div class="publicacoes w-60">
-    <div *ngFor="let publicacao of service.objPublicacoes" class="publicacao">
+    <div *ngFor="let publicacao of publicacaoService.objPublicacoes" class="publicacao">
       <p>
         <b>{{publicacao.usuario.nome | uppercase}}</b>
         <mat-icon color="primary">verified</mat-icon>
@@ -8,14 +8,16 @@
       <img class="w-100" [src]="base64Imagem + publicacao.imagem">
 
       <p><b>{{publicacao.usuario.nome | uppercase}} </b> {{publicacao.descricao}}</p>
-      <div class="comentarios">
-        <p class="cor-gray">Ver todos os comentários X</p>
+      <div *ngIf="publicacao.comentarios.length > 0" class="comentarios">
+        <a (click)="abrirComentarios(publicacao.comentarios)">
+          <p class="cor-gray">Ver todos os {{publicacao.comentarios.length}} comentários</p>
+        </a>
       </div>
-      <form [formGroup]="formGroup" (submit)="publicar(1)">
+      <form [formGroup]="formGroup">
         <mat-form-field class="w-100">
           <mat-label>Adicione um comentário...</mat-label>
           <input matInput formControlName="comentario">
-          <mat-icon class="icon-comentario" matSuffix>chat</mat-icon>
+          <mat-icon (click)="publicar(publicacao)" class="icon-comentario" matSuffix>chat</mat-icon>
         </mat-form-field>
       </form>
     </div>
