@@ -2,6 +2,10 @@
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 
 
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
 .w-10 {
   width: 20%;
 }
@@ -40,4 +44,8 @@
 
 .w-100 {
   width: 100%;
+}
+
+.cor-gray {
+  color: gray;
 }

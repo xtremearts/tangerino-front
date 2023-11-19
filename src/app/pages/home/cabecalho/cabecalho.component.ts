@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CadPublicacaoComponent} from "../publicacao/cad-post/cad-publicacao.component";
+import {CadPublicacaoComponent} from "../publicacao/cad-publicacao/cad-publicacao.component";
 import {MatDialog} from "@angular/material/dialog";
 
 @Component({

@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {GeralUtils} from "./geralUtils";
 import {Observable} from "rxjs";
+import {PublicacaoRetornoModel} from "../models/publicacao.model";
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,10 @@ export class PublicacaoService {
 
   cadastrar(body: FormData): Observable<any> {
     return this.http.post(`${this.baseUrl}${this.path}`, body, {responseType: 'text'});
+  }
+
+  obterTodos(): Observable<PublicacaoRetornoModel[]> {
+    return this.http.get<PublicacaoRetornoModel[]>((`${this.baseUrl}${this.path}`))
   }
 
 }

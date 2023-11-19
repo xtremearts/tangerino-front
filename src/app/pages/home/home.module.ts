@@ -5,17 +5,19 @@ import {HomeRoutingModule} from './home-routing.module';
 import {IndexComponent} from './index/index.component';
 import {CabecalhoComponent} from "./cabecalho/cabecalho.component";
 import {MatListModule} from "@angular/material/list";
-import { CadPublicacaoComponent } from './publicacao/cad-post/cad-publicacao.component';
+import { CadPublicacaoComponent } from './publicacao/cad-publicacao/cad-publicacao.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
 import {MatIconModule} from "@angular/material/icon";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { LinhaTempoComponent } from './linha-tempo/linha-tempo.component';
+import { ListPublicacaoComponent } from './publicacao/list-publicacao/list-publicacao.component';
 
 
 @NgModule({
-  declarations: [IndexComponent, CabecalhoComponent, CadPublicacaoComponent],
+  declarations: [IndexComponent, CabecalhoComponent, CadPublicacaoComponent, LinhaTempoComponent, ListPublicacaoComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

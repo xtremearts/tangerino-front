@@ -1,0 +1,27 @@
+<div class="container-linha-tempo">
+  <div class="publicacoes w-60">
+    <div *ngFor="let publicacao of objPublicacoes" class="publicacao">
+      <p>
+        <b>{{publicacao.usuario.nome | uppercase}}</b>
+        <mat-icon color="primary">verified</mat-icon>
+      </p>
+      <img class="w-100" [src]="publicacao.imagem">
+
+      <p><b>{{publicacao.usuario.nome | uppercase}} </b> {{publicacao.descricao}}</p>
+      <div class="comentarios">
+        <p class="cor-gray">Ver todos os comentários X</p>
+      </div>
+      <form [formGroup]="formGroup" (submit)="publicar(1)">
+        <mat-form-field class="w-100">
+          <mat-label>Adicione um comentário...</mat-label>
+          <input matInput formControlName="comentario">
+          <mat-icon class="icon-comentario" matSuffix>chat</mat-icon>
+        </mat-form-field>
+      </form>
+    </div>
+    <mat-divider></mat-divider>
+
+  </div>
+
+
+</div>

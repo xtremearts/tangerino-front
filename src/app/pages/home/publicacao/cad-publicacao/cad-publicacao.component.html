@@ -2,7 +2,7 @@
 <mat-dialog-content>
   <form [formGroup]="formGroup" (submit)="cadastrarUsuario()">
     <mat-card class="w-95">
-      <div [ngClass]="imagemObrigatorio ? 'obrigatorio' : ''">
+      <div>
         <img class="w-100" *ngIf="file" [src]="imagemPreview">
         <span *ngIf="!file"><mat-icon class="icon-image">add_photo_alternate</mat-icon></span>
         <input style="display: none" type="file" #uploader (change)="adicionarImagem($event)" required/>

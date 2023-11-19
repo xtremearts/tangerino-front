@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {IndexComponent} from "./index/index.component";
-import {CadPublicacaoComponent} from "./publicacao/cad-post/cad-publicacao.component";
+import {CadPublicacaoComponent} from "./publicacao/cad-publicacao/cad-publicacao.component";
 
 const routes: Routes = [
   {

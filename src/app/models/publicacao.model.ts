@@ -8,3 +8,11 @@ export interface PublicacaoModel {
   descricao: string
 }
 
+export interface PublicacaoRetornoModel {
+  id: number
+  usuario: UsuarioModel
+  dtCriacao: Date
+  descricao: string
+  imagem: any
+}
+

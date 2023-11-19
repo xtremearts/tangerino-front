@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {PublicacaoService} from "../../../../services/publicacao.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {GeralUtils} from "../../../../services/geralUtils";
+import {MatDialog} from "@angular/material/dialog";
+import {PublicacaoModel} from "../../../../models/publicacao.model";
 
 @Component({
   selector: 'app-cad-post',
@@ -13,11 +16,15 @@ export class CadPublicacaoComponent implements OnInit {
   imagemPreview: any;
   imagemObrigatorio: any;
   formGroup!: FormGroup;
+  formControlNameImagem: any;
+
+
 
   constructor(
     public alert: MatSnackBar,
     public service: PublicacaoService,
-    public fb: FormBuilder
+    public fb: FormBuilder,
+    public modal: MatDialog
   ) {
   }
 
@@ -25,8 +32,9 @@ export class CadPublicacaoComponent implements OnInit {
     this.formGroup = this.fb.group({
       imagem: [null, Validators.required],
       descricao: null
-
     })
+
+    this.formControlNameImagem = this.formGroup.get('imagem');
   }
 
   adicionarImagem($event: Event) {
@@ -46,27 +54,30 @@ export class CadPublicacaoComponent implements OnInit {
       this.imagemPreview = reader.result;
     };
 
+    this.formControlNameImagem.setValue(this.file);
     this.imagemObrigatorio = false;
 
   }
 
   cadastrarUsuario() {
-    this.formGroup.get('imagem')?.setValue(this.file);
-
-    const arquivo = new FormData();
-    arquivo.append('arquivo', this.formGroup.get('imagem')?.value, 'nomeArquivo');
-    arquivo.append('descricao', this.formGroup.get('descricao')?.value)
+    if (this.formControlNameImagem.hasError('required')) this.imagemObrigatorio = true;
 
     if (this.formGroup.valid) {
+      const arquivo = new FormData();
+      arquivo.append('arquivo', this.formControlNameImagem?.value);
+      arquivo.append('descricao', this.formGroup.get('descricao')?.value)
+
       this.service.cadastrar(arquivo).subscribe({
         next: () => {
-          this.alert.open('Publicação Cadastrado com Sucesso!')
+          this.alert.open('Publicação Cadastrada com Sucesso!','Fechar', GeralUtils.configAlert)
+          this.modal.closeAll()
         },
         error: (error) => {
-          console.log(error)
-          this.alert.open(error)
+          this.alert.open(error, 'Fechar', GeralUtils.configAlert)
         }
       })
     }
   }
+
+
 }
