@@ -5,6 +5,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {GeralUtils} from "../../../../services/geralUtils";
 import {MatDialog} from "@angular/material/dialog";
 import {PublicacaoModel} from "../../../../models/publicacao.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-cad-post',
@@ -18,13 +19,12 @@ export class CadPublicacaoComponent implements OnInit {
   formGroup!: FormGroup;
   formControlNameImagem: any;
 
-
-
   constructor(
     public alert: MatSnackBar,
     public service: PublicacaoService,
     public fb: FormBuilder,
-    public modal: MatDialog
+    public modal: MatDialog,
+    public router: Router
   ) {
   }
 
@@ -52,10 +52,12 @@ export class CadPublicacaoComponent implements OnInit {
 
     reader.onload = () => {
       this.imagemPreview = reader.result;
+      console.log(reader.result)
     };
 
     this.formControlNameImagem.setValue(this.file);
     this.imagemObrigatorio = false;
+
 
   }
 
@@ -70,7 +72,8 @@ export class CadPublicacaoComponent implements OnInit {
       this.service.cadastrar(arquivo).subscribe({
         next: () => {
           this.alert.open('Publicação Cadastrada com Sucesso!','Fechar', GeralUtils.configAlert)
-          this.modal.closeAll()
+          this.service.carregarPublicacoes();
+          this.modal.closeAll();
         },
         error: (error) => {
           this.alert.open(error, 'Fechar', GeralUtils.configAlert)

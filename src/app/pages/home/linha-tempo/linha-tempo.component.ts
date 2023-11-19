@@ -12,7 +12,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class LinhaTempoComponent implements OnInit {
   formGroup!: FormGroup;
-  objPublicacoes?: PublicacaoRetornoModel[] | any
+  base64Imagem = GeralUtils.BASE64_IMAGEM;
 
   constructor(
     public fb: FormBuilder,
@@ -27,22 +27,11 @@ export class LinhaTempoComponent implements OnInit {
       idPublicacao: null
     })
 
-    this.obterTodos()
+    this.service.carregarPublicacoes()
   }
 
-  publicar(idPublicacao: number) {
 
-  }
+  publicar(number: number) {
 
-  obterTodos() {
-    this.service.obterTodos().subscribe({
-      next: (response) => {
-        this.objPublicacoes = response;
-        console.log(response);
-      },
-      error: (error) => {
-        this.alert.open(error, 'Fechar', GeralUtils.configAlert)
-      }
-    })
   }
 }
