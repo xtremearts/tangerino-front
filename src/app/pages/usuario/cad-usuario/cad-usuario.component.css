@@ -1,0 +1,10 @@
+.flex-container {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  border: solid 1px darkgrey;
+  text-align: center;
+  padding: 2% 0;
+}

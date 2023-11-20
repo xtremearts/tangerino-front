@@ -1,0 +1,24 @@
+<div class="container-linha-tempo">
+  <div *ngFor="let publicacao of publicacaoService.objPublicacaoAtiva" class="publicacao w-100">
+
+    <img class="w-50" [src]="base64Imagem + publicacao.imagem">
+    <div class="comentarios w-50">
+      <p class="w-100">
+        <b>{{publicacao.usuario.nome | uppercase}}</b>
+        <mat-icon color="primary">verified</mat-icon>
+        <mat-divider class="w-100"></mat-divider>
+      </p>
+
+
+      <p><b>{{publicacao.usuario.nome | uppercase}} </b>
+        <mat-icon color="primary">verified</mat-icon>
+        {{publicacao.descricao}} </p>
+      <div *ngFor="let comentario of publicacao.comentarios; index as i" class="comentario">
+        <p class="cor-gray"><b>{{comentario.usuario.nome | uppercase}} : </b> {{comentario.comentario}}
+          <mat-icon *ngIf="comentario.id && usuarioService.idUsuarioLogado == comentario.usuario.id" (click)="deletarComentario(comentario.id, i)" class="icon-delete" color="accent">close</mat-icon>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>

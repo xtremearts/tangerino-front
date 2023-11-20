@@ -1,0 +1,25 @@
+.container-linha-tempo {
+  display: flex;
+  justify-content: center;
+}
+
+p {
+  font-size: 14px;
+}
+
+img {
+  border: solid 1px rgba(0, 0, 0, 0.1);
+}
+
+mat-icon {
+  font-size: 14px;
+  margin-left: 3px;
+}
+
+.publicacao {
+  padding: 2% 0;
+}
+
+.icon-comentario {
+  color: gray;
+}
