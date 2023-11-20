@@ -3,6 +3,8 @@ import {MatDialog} from "@angular/material/dialog";
 import {CadFotosComponent} from "../cad-fotos/cad-fotos.component";
 import {AlbumService} from "../../../services/album.service";
 import {GeralUtils} from "../../../services/geralUtils";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {UsuarioService} from "../../../services/usuario.service";
 
 @Component({
   selector: 'app-list-fotos',
@@ -14,7 +16,9 @@ export class ListFotosComponent implements OnInit {
 
   constructor(
     public modal:MatDialog,
-    public service: AlbumService
+    public service: AlbumService,
+    public alert: MatSnackBar,
+    public usuarioServic: UsuarioService
   ) { }
 
   ngOnInit(): void {
@@ -29,6 +33,18 @@ export class ListFotosComponent implements OnInit {
     })
   }
 
+  deletarPublicacao(id: number) {
+    this.service.deletar(id).subscribe({
+      next: () => {
+        this.alert.open("Foto excluida com sucesso", 'Fechar', GeralUtils.configAlert)
+        this.service.carregarAlbuns()
+
+      },
+      error: (error) => {
+        this.alert.open(error.error.message, 'Fechar', GeralUtils.configAlert)
+      }
+    })
+  }
 
 
 }

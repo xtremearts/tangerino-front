@@ -47,6 +47,7 @@ export class CadFotosComponent implements OnInit {
       this.service.cadastrar(arquivo).subscribe({
         next: () => {
           this.alert.open('Album de fotos cadastrado com sucesso!', 'Fechar', GeralUtils.configAlert)
+          this.service.carregarAlbuns()
           this.modal.closeAll();
         },
         error: (error) => {

@@ -4,6 +4,7 @@ import {GeralUtils} from "./geralUtils";
 import {Observable} from "rxjs";
 import {AlbumModel} from "../models/album.model";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {UsuarioModel} from "../models/usuario.model";
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,7 @@ export class AlbumService {
     this.obterTodos().subscribe({
       next: (response) => {
         this.objAlbum = response;
+
         if (response.length == 0) {
           this.alert.open('Nenhuma imagem cadastrada até o momento', 'Fechar', GeralUtils.configAlert)
         }
