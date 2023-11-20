@@ -1,0 +1,11 @@
+<mat-list role="list" class="50">
+  <img src="../../../../assets/logo.png">
+  <mat-list-item [routerLink]="'/home'" role="listitem">Página inicial</mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item (click)="modalCriarPost()" role="listitem">Publicar</mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item [routerLink]="'/fotos'" role="listitem">Album de fotos</mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item (click)="deslogar()" class="sair" role="listitem">Sair</mat-list-item>
+
+</mat-list>

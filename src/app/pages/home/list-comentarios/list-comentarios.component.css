@@ -1,0 +1,29 @@
+.container-linha-tempo {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.publicacao {
+  display: flex;
+  flex-direction: row;
+}
+
+.comentarios {
+  margin-left: 20px;
+
+}
+
+p {
+  font-size: 14px;
+}
+
+mat-icon {
+  font-size: 14px;
+}
+
+.icon-delete {
+  font-size: 18px;
+  cursor: pointer;
+}
+

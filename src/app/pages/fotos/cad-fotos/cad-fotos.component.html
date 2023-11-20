@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Criar nova publicação</h1>
+<mat-dialog-content>
+  <mat-card class="w-95">
+    <div>
+      <img class="w-100" *ngIf="files" [src]="imagemPreview">
+      <span *ngIf="!files"><mat-icon class="icon-image">add_photo_alternate</mat-icon></span>
+      <input multiple style="display: none" type="file" #uploader (change)="adicionarImagem($event)" required/>
+    </div>
+
+    <mat-card-actions>
+      <button (click)="uploader.click()" class="action-button" type="button" color="primary" mat-button> Selecionar do
+        Computador
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+
+  <div class="botoes" mat-dialog-actions>
+    <button color="warn" mat-raised-button mat-dialog-close>CANCELAR</button>
+    <button color="primary" (click)="cadastrarFotos()" mat-raised-button>CADASTRAR FOTOS</button>
+  </div>
+</mat-dialog-content>

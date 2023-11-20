@@ -1,0 +1,15 @@
+<div class="row-home">
+  <app-cabecalho class="w-20"></app-cabecalho>
+
+  <div class="container w-80">
+    <button (click)="cadastrarFotos()" color="primary" mat-raised-button>cadastrar nova foto</button>
+
+    <div class="imagens">
+      <div class="imagem w-100" *ngFor="let imagens of service.objAlbum; index as i">
+        <p><mat-icon>verified</mat-icon>{{imagens.usuario.nome | uppercase}}</p>
+        <img class="w-100" [src]="base64Image + imagens.imagem">
+        <button *ngIf="usuarioServic.idUsuarioLogado == imagens.usuario.id" (click)="deletarPublicacao(imagens.id)" mat-button color="warn">deletar</button>
+      </div>
+    </div>
+  </div>
+</div>

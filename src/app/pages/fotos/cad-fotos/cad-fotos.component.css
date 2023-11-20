@@ -1,0 +1,18 @@
+.icon-image {
+  font-size: 80px;
+  color: rgba(200, 200, 200, 0.5);
+  text-align: center;
+}
+
+.botoes {
+  display: flex;
+  justify-content: flex-end;
+}
+
+mat-card{
+  margin-bottom: 50px;
+  text-align: center;
+  margin-top: 20px;
+
+}
+
