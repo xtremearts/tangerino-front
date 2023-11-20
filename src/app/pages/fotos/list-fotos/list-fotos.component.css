@@ -2,13 +2,19 @@
   display: flex;
 }
 
-.container {
-
-}
-
 .imagens {
   margin-top: 20px;
   display: flex;
   flex-direction: row;
   align-content: start;
+}
+
+p {
+  font-size: 14px;
+  text-align: center;
+}
+
+mat-icon {
+  font-size: 14px;
+  color: dodgerblue;
 }

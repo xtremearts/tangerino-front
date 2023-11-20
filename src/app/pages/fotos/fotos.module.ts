@@ -6,6 +6,7 @@ import { ListFotosComponent } from './list-fotos/list-fotos.component';
 import {HomeModule} from "../home/home.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {MatButtonModule} from "@angular/material/button";
         HomeModule,
         FormsModule,
         ReactiveFormsModule,
-        MatButtonModule
+        MatButtonModule,
+        MatIconModule
     ]
 })
 export class FotosModule { }
