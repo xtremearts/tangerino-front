@@ -13,6 +13,7 @@ export class PublicacaoService {
   private readonly path = 'v1/publicacao'
 
   objPublicacoes!: PublicacaoRetornoModel[] | any;
+  objPublicacaoAtiva!: PublicacaoRetornoModel[] | any;
 
   constructor(
     public http: HttpClient,
@@ -43,4 +44,7 @@ export class PublicacaoService {
     })
   }
 
+  deletar(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}${this.path}/${id}`)
+  }
 }

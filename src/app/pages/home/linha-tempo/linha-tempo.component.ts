@@ -5,8 +5,9 @@ import {PublicacaoService} from "../../../services/publicacao.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {ComentarioService} from "../../../services/comentario.service";
 import {ComentarioFilterModel} from "../../../models/comentario-filter.model";
-import {ComentarioModel} from "../../../models/comentario.model";
-import {PublicacaoModel} from "../../../models/publicacao.model";
+import {PublicacaoModel, PublicacaoRetornoModel} from "../../../models/publicacao.model";
+import {MatDialog} from "@angular/material/dialog";
+import {ListComentariosComponent} from "../list-comentarios/list-comentarios.component";
 
 @Component({
   selector: 'app-linha-tempo',
@@ -17,13 +18,14 @@ export class LinhaTempoComponent implements OnInit {
   formGroup!: FormGroup;
   base64Imagem = GeralUtils.BASE64_IMAGEM;
   filter!: ComentarioFilterModel;
-  objComentariosAtivos?: ComentarioModel[];
+
 
   constructor(
     public fb: FormBuilder,
     public publicacaoService: PublicacaoService,
     public comentarioService: ComentarioService,
     public alert: MatSnackBar,
+    public modal: MatDialog
   ) {
   }
 
@@ -43,8 +45,7 @@ export class LinhaTempoComponent implements OnInit {
     this.filter = this.formGroup.value;
     if (this.formGroup.valid) {
       this.comentarioService.cadastrar(this.filter).subscribe({
-        next: (response) => {
-          this.objComentariosAtivos = response
+        next: () => {
           this.publicacaoService.carregarPublicacoes()
           this.formGroup.get('comentario')?.reset();
           this.alert.open('Comentário salvo com sucesso', 'Fechar', GeralUtils.configAlert)
@@ -56,20 +57,26 @@ export class LinhaTempoComponent implements OnInit {
     }
   }
 
-  obterComentariosPublicacao(id: number) {
-    this.comentarioService.obterPorPublicacao(id).subscribe({
-      next: (response) => {
-        this.objComentariosAtivos = response
+  abrirComentarios(publicacao: PublicacaoRetornoModel) {
+    this.publicacaoService.objPublicacaoAtiva = [publicacao];
+    this.modal.open(ListComentariosComponent, {
+      width: '80%',
+    })
+  }
+
+  deletarPublicacao(id: number) {
+    this.publicacaoService.deletar(id).subscribe({
+      next: () => {
+        this.alert.open("Publicação excluída com sucesso", 'Fechar', GeralUtils.configAlert)
+        this.publicacaoService.carregarPublicacoes()
+
       },
       error: (error) => {
-        this.alert.open(error, 'Fechar', GeralUtils.configAlert)
+        this.alert.open(error.error.message, 'Fechar', GeralUtils.configAlert)
       }
     })
   }
 
 
-  abrirComentarios(comentarios: ComentarioModel[]) {
-    this.objComentariosAtivos = comentarios;
 
-  }
 }

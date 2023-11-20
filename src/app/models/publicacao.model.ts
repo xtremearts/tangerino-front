@@ -15,7 +15,7 @@ export class PublicacaoRetornoModel {
   dtCriacao?: Date;
   descricao?: string;
   imagem?: any;
-  comentario?: ComentarioModel[]
+  comentarios?: ComentarioModel[]
 
 }
 

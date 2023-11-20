@@ -4,6 +4,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {UsuarioService} from "../../../services/usuario.service";
 import {UsuarioModel} from "../../../models/usuario.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-cad-usuario',
@@ -17,7 +18,8 @@ export class CadUsuarioComponent implements OnInit {
   constructor(
     public fb: FormBuilder,
     public alert: MatSnackBar,
-    public service: UsuarioService
+    public service: UsuarioService,
+    public router: Router
   ) {
   }
 
@@ -38,6 +40,7 @@ export class CadUsuarioComponent implements OnInit {
         next: (response) => {
           this.service.usuarioLogado = response;
           this.alert.open('Usuário Cadastrado com Sucesso!')
+          this.router.navigate(['/usuario/login'])
         },
         error: (error) => {
           console.log(error)

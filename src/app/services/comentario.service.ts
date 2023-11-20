@@ -23,14 +23,9 @@ export class ComentarioService {
     return this.http.post<ComentarioModel[]>(`${this.baseUrl}${this.path}`, body);
   }
 
-  obterTodos(): Observable<ComentarioModel[]> {
-    return this.http.get<ComentarioModel[]>((`${this.baseUrl}${this.path}/obter-todos-por-usuario`))
+  deletar(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}${this.path}/${id}`)
   }
-
-  obterPorPublicacao(id: number): Observable<ComentarioModel[]> {
-    return this.http.get<ComentarioModel[]>((`${this.baseUrl}${this.path}/obter-por-publicacao/${id}`))
-  }
-
 
 
 }

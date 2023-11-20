@@ -14,10 +14,11 @@ import {MatIconModule} from "@angular/material/icon";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LinhaTempoComponent } from './linha-tempo/linha-tempo.component';
 import { ListPublicacaoComponent } from './publicacao/list-publicacao/list-publicacao.component';
+import { ListComentariosComponent } from './list-comentarios/list-comentarios.component';
 
 
 @NgModule({
-  declarations: [IndexComponent, CabecalhoComponent, CadPublicacaoComponent, LinhaTempoComponent, ListPublicacaoComponent],
+  declarations: [IndexComponent, CabecalhoComponent, CadPublicacaoComponent, LinhaTempoComponent, ListPublicacaoComponent, ListComentariosComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

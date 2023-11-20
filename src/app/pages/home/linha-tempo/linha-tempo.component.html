@@ -4,12 +4,13 @@
       <p>
         <b>{{publicacao.usuario.nome | uppercase}}</b>
         <mat-icon color="primary">verified</mat-icon>
+        <button (click)="deletarPublicacao(publicacao.id)" style="float: right" color="warn" mat-button>Deletar</button>
       </p>
       <img class="w-100" [src]="base64Imagem + publicacao.imagem">
 
       <p><b>{{publicacao.usuario.nome | uppercase}} </b> {{publicacao.descricao}}</p>
       <div *ngIf="publicacao.comentarios.length > 0" class="comentarios">
-        <a (click)="abrirComentarios(publicacao.comentarios)">
+        <a (click)="abrirComentarios(publicacao)">
           <p class="cor-gray">Ver todos os {{publicacao.comentarios.length}} comentários</p>
         </a>
       </div>
