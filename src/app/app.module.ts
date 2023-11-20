@@ -11,10 +11,17 @@ import {MatListModule} from "@angular/material/list";
 import {UsuarioModule} from "./pages/usuario/usuario.module";
 import {InterceptorModule} from "./services/interceptors/interceptor.module";
 import {HomeModule} from "./pages/home/home.module";
+import { CadFotosComponent } from './pages/fotos/cad-fotos/cad-fotos.component';
+import {FotosModule} from "./pages/fotos/fotos.module";
+import {MatInputModule} from "@angular/material/input";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatIconModule} from "@angular/material/icon";
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
     AppComponent,
+    CadFotosComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +33,12 @@ import {HomeModule} from "./pages/home/home.module";
     MatListModule,
     UsuarioModule,
     InterceptorModule,
-    HomeModule
+    HomeModule,
+    FotosModule,
+    MatInputModule,
+    MatDialogModule,
+    MatIconModule,
+    MatCardModule
 
   ],
   providers: [],

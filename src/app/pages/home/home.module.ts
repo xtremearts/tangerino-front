@@ -18,18 +18,21 @@ import { ListComentariosComponent } from './list-comentarios/list-comentarios.co
 
 
 @NgModule({
-  declarations: [IndexComponent, CabecalhoComponent, CadPublicacaoComponent, LinhaTempoComponent, ListPublicacaoComponent, ListComentariosComponent],
-  imports: [
-    CommonModule,
-    HomeRoutingModule,
-    MatListModule,
-    MatDialogModule,
-    MatInputModule,
-    MatButtonModule,
-    MatCardModule,
-    MatIconModule,
-    ReactiveFormsModule,
-    FormsModule
-  ]
+    declarations: [IndexComponent, CabecalhoComponent, CadPublicacaoComponent, LinhaTempoComponent, ListPublicacaoComponent, ListComentariosComponent],
+    exports: [
+        CabecalhoComponent
+    ],
+    imports: [
+        CommonModule,
+        HomeRoutingModule,
+        MatListModule,
+        MatDialogModule,
+        MatInputModule,
+        MatButtonModule,
+        MatCardModule,
+        MatIconModule,
+        ReactiveFormsModule,
+        FormsModule
+    ]
 })
 export class HomeModule { }

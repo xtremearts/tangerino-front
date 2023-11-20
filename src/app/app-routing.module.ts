@@ -23,6 +23,16 @@ const routes: Routes = [
     ]
   },
 
+  {
+    path: '',
+    children: [
+      {
+        path: 'fotos',
+        loadChildren: () => import ('./pages/fotos/fotos.module').then((m) => m.FotosModule),
+      }
+    ]
+  },
+
   {path: '**', pathMatch: 'full', redirectTo: '/login'},
 ];
 

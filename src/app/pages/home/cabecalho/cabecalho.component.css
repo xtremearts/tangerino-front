@@ -7,3 +7,7 @@ img {
   color: red;
   cursor: pointer;
 }
+
+mat-list-item {
+  cursor: pointer;
+}

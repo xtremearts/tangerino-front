@@ -1,0 +1,13 @@
+<div class="row-home">
+  <app-cabecalho class="w-20"></app-cabecalho>
+  <div class="container w-80">
+    <button (click)="cadastrarFotos()" color="primary" mat-raised-button>cadastrar nova foto</button>
+    <div class="imagens">
+      <div class="imagem w-100" *ngFor="let imagens of service.objAlbum">
+        <img class="w-100" [src]="base64Image + imagens.imagem">
+      </div>
+    </div>
+
+
+  </div>
+</div>

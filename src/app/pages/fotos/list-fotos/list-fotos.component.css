@@ -1,0 +1,13 @@
+.row-home{
+  display: flex;
+}
+
+.container {
+
+}
+
+.imagens {
+  display: flex;
+  flex-direction: row;
+  align-content: start;
+}
