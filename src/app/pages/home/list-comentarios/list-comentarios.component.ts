@@ -4,6 +4,7 @@ import {GeralUtils} from "../../../services/geralUtils";
 import {FormGroup} from "@angular/forms";
 import {ComentarioService} from "../../../services/comentario.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {UsuarioService} from "../../../services/usuario.service";
 
 @Component({
   selector: 'app-list-comentarios',
@@ -17,7 +18,8 @@ export class ListComentariosComponent implements OnInit {
   constructor(
     public publicacaoService: PublicacaoService,
     public comentarioService: ComentarioService,
-    public alert: MatSnackBar
+    public alert: MatSnackBar,
+    public usuarioService: UsuarioService
 
   ) { }
 

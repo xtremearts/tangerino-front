@@ -38,8 +38,7 @@ export class PublicacaoService {
         }
       },
       error: (error) => {
-        console.log(error)
-        this.alert.open(error, 'Fechar', GeralUtils.configAlert)
+        this.alert.open(error.error.message, 'Fechar', GeralUtils.configAlert)
       }
     })
   }

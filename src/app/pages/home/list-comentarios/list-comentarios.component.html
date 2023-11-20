@@ -15,7 +15,7 @@
         {{publicacao.descricao}} </p>
       <div *ngFor="let comentario of publicacao.comentarios; index as i" class="comentario">
         <p class="cor-gray"><b>{{comentario.usuario.nome | uppercase}} : </b> {{comentario.comentario}}
-          <mat-icon *ngIf="comentario.id" (click)="deletarComentario(comentario.id, i)" class="icon-delete" color="accent">close</mat-icon>
+          <mat-icon *ngIf="comentario.id && usuarioService.idUsuarioLogado == comentario.usuario.id" (click)="deletarComentario(comentario.id, i)" class="icon-delete" color="accent">close</mat-icon>
         </p>
       </div>
     </div>

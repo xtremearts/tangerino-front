@@ -2,3 +2,8 @@ img {
   width: 150px;
   margin-bottom: 20px;
 }
+
+.sair {
+  color: red;
+  cursor: pointer;
+}

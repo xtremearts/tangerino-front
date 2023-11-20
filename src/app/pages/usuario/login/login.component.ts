@@ -3,6 +3,9 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UsuarioService} from "../../../services/usuario.service";
 import {LoginFilterModel} from "../../../models/login-filter.model";
 import {Router} from "@angular/router";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {GeralUtils} from "../../../services/geralUtils";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-login',
@@ -18,6 +21,7 @@ export class LoginComponent implements OnInit {
     public formBuilder: FormBuilder,
     public service: UsuarioService,
     public router: Router,
+    public alert: MatSnackBar
   ) {
   }
 
@@ -37,9 +41,13 @@ export class LoginComponent implements OnInit {
         next: (response) => {
           localStorage.setItem("token", response)
           this.router.navigate(['home/'])
+          this.alert.open("Login efetuado com sucesso!", 'Fechar', GeralUtils.configAlert);
+
         },
-        error: (error) => {
-          console.log(error)
+        error: (error:HttpErrorResponse) => {
+          if (error.status == 403) {
+            this.alert.open("Usuário ou senha incorretos, verifique email e senha", 'Fechar', GeralUtils.configAlert);
+          }
         }
       })
     }

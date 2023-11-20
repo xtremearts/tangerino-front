@@ -76,7 +76,7 @@ export class CadPublicacaoComponent implements OnInit {
           this.modal.closeAll();
         },
         error: (error) => {
-          this.alert.open(error, 'Fechar', GeralUtils.configAlert)
+          this.alert.open(error.error.message, 'Fechar', GeralUtils.configAlert)
         }
       })
     }

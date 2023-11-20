@@ -43,8 +43,7 @@ export class CadUsuarioComponent implements OnInit {
           this.router.navigate(['/usuario/login'])
         },
         error: (error) => {
-          console.log(error)
-          this.alert.open(error)
+          this.alert.open(error.error.message)
         }
       })
     }

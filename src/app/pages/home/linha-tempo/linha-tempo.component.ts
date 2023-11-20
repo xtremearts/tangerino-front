@@ -53,7 +53,7 @@ export class LinhaTempoComponent implements OnInit {
           this.alert.open('Comentário salvo com sucesso', 'Fechar', GeralUtils.configAlert)
         },
         error: (error) => {
-          this.alert.open(error, 'Fechar', GeralUtils.configAlert)
+          this.alert.open(error.error.message, 'Fechar', GeralUtils.configAlert)
         }
       })
     }
