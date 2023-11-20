@@ -8,6 +8,7 @@ import {ComentarioFilterModel} from "../../../models/comentario-filter.model";
 import {PublicacaoModel, PublicacaoRetornoModel} from "../../../models/publicacao.model";
 import {MatDialog} from "@angular/material/dialog";
 import {ListComentariosComponent} from "../list-comentarios/list-comentarios.component";
+import {UsuarioService} from "../../../services/usuario.service";
 
 @Component({
   selector: 'app-linha-tempo',
@@ -25,7 +26,8 @@ export class LinhaTempoComponent implements OnInit {
     public publicacaoService: PublicacaoService,
     public comentarioService: ComentarioService,
     public alert: MatSnackBar,
-    public modal: MatDialog
+    public modal: MatDialog,
+    public usuarioService: UsuarioService
   ) {
   }
 

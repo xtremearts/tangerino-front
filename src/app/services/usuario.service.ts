@@ -14,6 +14,7 @@ export class UsuarioService {
   private readonly pathLogin = 'v1/login'
 
   usuarioLogado!: UsuarioModel
+  idUsuarioLogado = GeralUtils.usuarioLogado;
 
   constructor(
     public http: HttpClient

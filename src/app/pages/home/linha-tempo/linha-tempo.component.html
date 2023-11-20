@@ -4,7 +4,7 @@
       <p>
         <b>{{publicacao.usuario.nome | uppercase}}</b>
         <mat-icon color="primary">verified</mat-icon>
-        <button (click)="deletarPublicacao(publicacao.id)" style="float: right" color="warn" mat-button>Deletar</button>
+        <button *ngIf="publicacao.usuario.id == usuarioService.idUsuarioLogado" (click)="deletarPublicacao(publicacao.id)" style="float: right" color="warn" mat-button>Deletar</button>
       </p>
       <img class="w-100" [src]="base64Imagem + publicacao.imagem">
 
